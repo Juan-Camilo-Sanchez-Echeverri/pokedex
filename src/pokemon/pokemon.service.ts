@@ -69,7 +69,7 @@ export class PokemonService {
     if (updatePokemonDto.name)
       updatePokemonDto.name = updatePokemonDto.name.toLowerCase();
     try {
-      await pokemon.updateOne(updatePokemonDto);
+      await pokemon.updateOne({ $set: updatePokemonDto });
 
       return { ...pokemon.toJSON(), ...updatePokemonDto };
     } catch (error) {
